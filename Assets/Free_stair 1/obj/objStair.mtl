@@ -1,0 +1,27 @@
+newmtl gate_lambert49SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd -s_0.5_0.5_germany010_-_còpia.jpg
+bump  -bm 0.02 -s_0.5_0.5_germany010b.jpg
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl lambert30SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd hungary001.jpg
+bump  -bm 0.01 hungary0black.jpg
+Ni 1.00
+Ks 0.26 0.26 0.26
+newmtl lambert34SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd -mm_0.037931_1_hungary004.jpg
+bump  -bm 0.2 hungary004b.jpg
+Ni 1.00
+Ks 0.50 0.50 0.50
