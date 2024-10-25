@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - PickupObject
+  - Book
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -12,13 +14,6 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 
