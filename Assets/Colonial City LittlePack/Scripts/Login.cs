@@ -47,6 +47,8 @@ public class LoginManager : MonoBehaviour
             www.downloadHandler = new DownloadHandlerBuffer();
 
             yield return www.SendWebRequest();
+            Debug.Log("Datos enviados: " + jsonData); // Verifica lo que se envía
+            Debug.Log("Respuesta recibida: " + www.downloadHandler.text); // Muestra la respuesta
 
             Debug.Log("Estado de la solicitud: " + www.result);
             Debug.Log("Código de respuesta: " + www.responseCode);
