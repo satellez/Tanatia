@@ -2,6 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!129 &1
 PlayerSettings:
+  
   m_ObjectHideFlags: 0
   serializedVersion: 26
   productGUID: ac2a95de6aa0d9a49b832cf72c0f3106
