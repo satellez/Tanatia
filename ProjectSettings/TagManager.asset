@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Book
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -12,9 +13,6 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
   - 
   - 
   - 
