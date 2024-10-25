@@ -6,7 +6,7 @@ using System.Collections;
 
 public class LoginManager : MonoBehaviour
 {
-    public InputField usernameField;
+    public InputField emailField;  // Cambiar a InputField para email
     public InputField passwordField;
     public Text errorMessage;
     public Button loginButton;
@@ -20,69 +20,69 @@ public class LoginManager : MonoBehaviour
 
     void OnLoginButtonClicked()
     {
-        string username = usernameField.text;
+        string email = emailField.text;  // Cambiar a email
         string password = passwordField.text;
 
-        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {
-            errorMessage.text = "Por favor ingrese su usuario y contrase�a.";
+            errorMessage.text = "Por favor ingrese su email y contraseña.";
             return;
         }
 
-        StartCoroutine(Login(username, password));
+        StartCoroutine(Login(email, password));
     }
 
-    IEnumerator Login(string username, string password)
+    IEnumerator Login(string email, string password)
     {
         // Crear la data del JSON para enviar
-        var loginData = new LoginData { Username = username, Password = password };
+        var loginData = new LoginData { Email = email, Password = password };  // Cambiar Username a Email
         string jsonData = JsonUtility.ToJson(loginData);
 
-        // Configurar el request
-        using (UnityWebRequest www = UnityWebRequest.PostWwwForm(loginUrl, jsonData))
+        Debug.Log("Datos enviados: " + jsonData);  // Agregar depuración
+
+        using (UnityWebRequest www = new UnityWebRequest(loginUrl, "POST"))
         {
             www.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(jsonData));
             www.uploadHandler.contentType = "application/json";
-
             www.downloadHandler = new DownloadHandlerBuffer();
 
-            // Enviar el request y esperar la respuesta
             yield return www.SendWebRequest();
 
-            // Verificar el resultado de la solicitud
+            Debug.Log("Estado de la solicitud: " + www.result);
+            Debug.Log("Código de respuesta: " + www.responseCode);
+
             if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
             {
-                Debug.LogError("Error en la conexión: " + www.error); // Mostrar error en la consola
-                errorMessage.text = "Error de conexión: " + www.error; // Mostrar error en pantalla
+                Debug.LogError("Error en la conexión: " + www.error);
+                errorMessage.text = "Error de conexión: " + www.error;
             }
             else
             {
-                Debug.Log("Respuesta recibida: " + www.downloadHandler.text); // Mostrar respuesta en la consola
+                Debug.Log("Respuesta recibida: " + www.downloadHandler.text);
 
-                // Aquí puedes verificar si la API envía un mensaje de éxito o un token
-                if (www.responseCode == 200) // Asegúrate de que el código de éxito es 200 (HTTP OK)
+                if (www.responseCode == 200)
                 {
                     Debug.Log("Inicio de sesión exitoso.");
-                    errorMessage.text = "Inicio de sesión exitoso."; // Mensaje en pantalla
-
-                    // Cargar la siguiente escena
-                    SceneManager.LoadScene("MainGameScene"); // Cambiar a la escena principal
+                    errorMessage.text = "Inicio de sesión exitoso.";
+                    SceneManager.LoadScene("Cementerio"); // Cambiar a la escena principal
+                }
+                else if (www.responseCode == 401)
+                {
+                    errorMessage.text = "Usuario o contraseña incorrectos.";
                 }
                 else
                 {
-                    // Si la respuesta no es la esperada, muestra un mensaje de error
                     errorMessage.text = "Error de inicio de sesión: " + www.downloadHandler.text;
                 }
             }
         }
     }
 
-
-    // Clase para representar los datos de inicio de sesi�n
+    // Clase para representar los datos de inicio de sesión
     [System.Serializable]
     public class LoginData
     {
-        public string Username;
+        public string Email;    // Cambiar Username a Email
         public string Password;
     }
 }

@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 189406337}
   - component: {fileID: 189406336}
   m_Layer: 5
-  m_Name: UsernameField
+  m_Name: emailField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
