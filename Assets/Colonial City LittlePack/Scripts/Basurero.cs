@@ -3,6 +3,7 @@ using UnityEngine;
 public class Basurero : MonoBehaviour
 {
     public ScorePopup scorePopup; // Asegúrate de asignar este campo en el Inspector
+    public ScoreManager scoreManager; // Referencia a ScoreManager
     private int currentScore = 0; // Variable para llevar el puntaje actual
 
     private void OnTriggerEnter(Collider other)
@@ -16,6 +17,7 @@ public class Basurero : MonoBehaviour
             // Añade puntaje y muestra el popup
             AddScore(200); // Agrega 200 puntos al puntaje
             ShowScorePopup(); // Muestra el popup con el puntaje total
+            scoreManager.BookCollected(); // Notifica a ScoreManager que un libro fue recogido
         }
     }
 

@@ -16,8 +16,8 @@ public class ScoreManager : MonoBehaviour
         booksCollected++;
         AddScore(200); // Asumimos que cada libro da 200 puntos
 
-        // Verificamos si el jugador alcanzó los 5 libros o 1000 puntos
-        if (currentScore >= scoreToReach || booksCollected >= requiredBooks)
+        // Verificamos si el jugador alcanzó los 5 libros y los 1000 puntos
+        if (currentScore >= scoreToReach && booksCollected >= requiredBooks)
         {
             // Llamar al APIManager para enviar los datos del checkpoint
             apiManager.SendBookData("CheckpointCementerio");
@@ -43,7 +43,7 @@ public class ScoreManager : MonoBehaviour
     // Cambiar de escena
     void LoadNextScene()
     {
-        // Asegúrate de tener una escena llamada "NextScene" o la que desees cargar
+        // Asegúrate de tener una escena llamada "Hospital" o la que desees cargar
         SceneManager.LoadScene("Hospital"); // O usa el nombre adecuado de tu escena
     }
 }
