@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Text;
 
-public class APIManager : MonoBehaviour
+public class APIManager2 : MonoBehaviour
 {
     // URL del endpoint de la API (cambia esta URL por la de tu API)
     private string apiUrl = "https://www.bibliotecasantotomas.somee.com/api/Books";
