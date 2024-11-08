@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; // Importa SceneManager para cambiar de escena
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController2 : MonoBehaviour
@@ -26,6 +27,8 @@ public class PlayerController2 : MonoBehaviour
     Vector3 rotationinput = Vector3.zero;
     CharacterController characterController;
 
+    public string targetSceneName = "Biblio1"; // Nombre de la escena a cargar
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -35,6 +38,16 @@ public class PlayerController2 : MonoBehaviour
     {
         Look();
         Move();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // Verifica si el jugador ha chocado con el cuchillo
+        if (other.CompareTag("Cuchillo"))
+        {
+            // Carga la escena "Biblio1"
+            SceneManager.LoadScene(targetSceneName);
+        }
     }
 
     private void Move()
