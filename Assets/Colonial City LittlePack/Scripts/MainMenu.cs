@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
 
     public void IniciarJuego()
     {
-        SceneManager.LoadScene("Biblio1");
+        SceneManager.LoadScene("Biblio2");
     }
 
     public void SalirJuego()
