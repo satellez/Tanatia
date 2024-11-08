@@ -133,7 +133,7 @@ public class PlayerController3 : MonoBehaviour
 
     public void LoadNextScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Cementerio");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Biblio1");
         enabled = false;
     }
 

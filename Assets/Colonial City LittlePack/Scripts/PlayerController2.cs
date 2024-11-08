@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // Importa SceneManager para cambiar de escena
+using TMPro; // Asegúrate de tener TextMeshPro para el mensaje
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController2 : MonoBehaviour
 {
     [Header("References")]
     public Camera playerCamera;
+    public GameObject endGamePanel; // Panel de finalización del juego
+    public TextMeshProUGUI endGameText; // Texto de finalización del juego
 
     [Header("General")]
     public float gravityScale = -20f;
@@ -27,11 +29,10 @@ public class PlayerController2 : MonoBehaviour
     Vector3 rotationinput = Vector3.zero;
     CharacterController characterController;
 
-    public string targetSceneName = "Biblio1"; // Nombre de la escena a cargar
-
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        endGamePanel.SetActive(false); // Asegúrate de que el panel esté oculto al inicio
     }
 
     private void Update()
@@ -45,8 +46,8 @@ public class PlayerController2 : MonoBehaviour
         // Verifica si el jugador ha chocado con el cuchillo
         if (other.CompareTag("Cuchillo"))
         {
-            // Carga la escena "Biblio1"
-            SceneManager.LoadScene(targetSceneName);
+            // Muestra el mensaje de finalización del juego
+            ShowEndGameMessage("¡Felicitaciones, juego finalizado!");
         }
     }
 
@@ -86,5 +87,12 @@ public class PlayerController2 : MonoBehaviour
 
         transform.Rotate(Vector3.up * rotationinput.x);
         playerCamera.transform.localRotation = Quaternion.Euler(-cameraVerticalAngle, 0f, 0f);
+    }
+
+    private void ShowEndGameMessage(string message)
+    {
+        endGamePanel.SetActive(true);
+        endGameText.text = message;
+        Time.timeScale = 0f; // Pausa el juego
     }
 }
