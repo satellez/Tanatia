@@ -7,6 +7,13 @@ public class ObjectPickup : MonoBehaviour
     public Transform holdPosition; // Punto donde se colocará el objeto recogido
     private GameObject pickedObject;
 
+    void Start()
+    {
+        // Bloquea el cursor y lo oculta
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E)) // Presiona 'E' para recoger o soltar el objeto
