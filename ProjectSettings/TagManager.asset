@@ -7,6 +7,8 @@ TagManager:
   - PickupObject
   - Book
   - Floor
+  - personaje
+  - Cuchillo
   layers:
   - Default
   - TransparentFX
@@ -14,6 +16,13 @@ TagManager:
   - 
   - Water
   - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
