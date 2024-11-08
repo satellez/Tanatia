@@ -6,7 +6,7 @@ public class ScoreManager : MonoBehaviour
     public ScorePopup scorePopup;
     public int scoreToReach = 1000; // Puntaje objetivo
     public int requiredBooks = 5; // Libros necesarios
-    public APIManager apiManager; // Referencia a APIManager
+    public APIManager2 apiManager; // Referencia a APIManager
     private int currentScore = 0;
     private int booksCollected = 0;
 

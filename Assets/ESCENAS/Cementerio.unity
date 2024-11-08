@@ -5462,7 +5462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 505051155}
-  - component: {fileID: 505051154}
+  - component: {fileID: 505051156}
   m_Layer: 0
   m_Name: API
   m_TagString: Untagged
@@ -5470,18 +5470,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &505051154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505051153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bfd055dcbf82044ab287be76d115023, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &505051155
 Transform:
   m_ObjectHideFlags: 0
@@ -5497,6 +5485,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &505051156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505051153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bfd055dcbf82044ab287be76d115023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &508120472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13839,7 +13839,7 @@ MonoBehaviour:
   gravityScale: -20
   walkSpeed: 4
   runSpeed: 5
-  rotationSensibility: 80
+  rotationSensibility: 200
   jumpHeight: 1
 --- !u!143 &1479348259
 CharacterController:
@@ -26107,7 +26107,7 @@ MonoBehaviour:
   scorePopup: {fileID: 1627525795}
   scoreToReach: 1000
   requiredBooks: 5
-  apiManager: {fileID: 505051154}
+  apiManager: {fileID: 505051156}
 --- !u!1 &2140933268
 GameObject:
   m_ObjectHideFlags: 0
