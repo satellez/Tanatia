@@ -23,7 +23,7 @@ public class APIManager : MonoBehaviour
         {
             id = 0, // El ID se establecerá en la base de datos o si lo gestionas manualmente
             idEdition = 1, // El idEdition debe coincidir con lo que espera tu API
-            title = "CheckPointCementerio", // Cambia este valor por el título que desees
+            title = "CheckPointCementerio2", // Cambia este valor por el título que desees
             code = "77777", // Código del libro, cámbialo por el código que la API espera
             publicationYear = "2024-10-25", // Fecha de publicación fija como en el ejemplo
             edition = new Edition

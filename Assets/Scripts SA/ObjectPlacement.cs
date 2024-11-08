@@ -1,66 +1,54 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPlacement : MonoBehaviour
 {
     private int objectCount = 0; // Para contar los objetos colocados
-    public int requiredObjects = 3; // Necesitas colocar 3 objetos
-    public string Cementerio; // Nombre de la siguiente escena a cargar
+    public string[] requiredObjectNames = { "ob1", "ob2", "ob3" }; // Nombres específicos de los objetos
+    public string nextSceneName; // Nombre de la siguiente escena a cargar o evento a activar
+    public CountdownTimer countdownTimer; // Referencia al temporizador
 
-    private APIManager apiManager; // Referencia a APIManager
-
-    void Start()
-    {
-        // Encuentra el componente APIManager en la escena
-        apiManager = FindObjectOfType<APIManager>();
-
-        // Verifica si el APIManager se encontró correctamente
-        if (apiManager == null)
-        {
-            Debug.LogError("No se encontró el componente APIManager en la escena.");
-        }
-        else
-        {
-            Debug.Log("APIManager encontrado con éxito.");
-        }
-    }
+    private HashSet<string> objectsInPlace = new HashSet<string>(); // Almacena los nombres de los objetos colocados
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PickupObject"))
+        // Verifica si el objeto que entra tiene el tag `PickupObject` y es uno de los nombres requeridos
+        if (other.CompareTag("PickupObject") && IsRequiredObject(other.gameObject.name))
         {
-            Debug.Log("Objeto detectado: " + other.gameObject.name); // Para verificar si el objeto entra
-            objectCount++;
-            Debug.Log("Objetos colocados en la mesa: " + objectCount); // Para ver cuántos objetos se han colocado
-
-            other.gameObject.SetActive(false); // Desactiva el objeto para simular que está en la mesa
-
-            if (objectCount >= requiredObjects)
+            if (!objectsInPlace.Contains(other.gameObject.name)) // Evita contar el mismo objeto más de una vez
             {
-                Debug.Log("Se han colocado suficientes objetos. Preparándose para cambiar de escena.");
+                objectsInPlace.Add(other.gameObject.name);
+                objectCount++;
+                Debug.Log("Objeto detectado en la mesa: " + other.gameObject.name + ". Conteo actual: " + objectCount);
+            }
 
-                if (!string.IsNullOrEmpty(Cementerio))
-                {
-                    // Verificar que APIManager esté configurado antes de llamar a SendBookData
-                    if (apiManager != null)
-                    {
-                        // Enviar los datos de la escena a la API antes de cambiar de escena
-                        Debug.Log("Enviando datos a la API...");
-                        apiManager.SendBookData(Cementerio);
-                    }
-                    else
-                    {
-                        Debug.LogError("APIManager no está asignado. No se puede enviar los datos.");
-                    }
+            // Verifica si los tres objetos requeridos están colocados
+            if (objectCount == requiredObjectNames.Length)
+            {
+                Debug.Log("Todos los objetos requeridos están en la mesa. Cambiando de escena...");
 
-                    // Cambia la escena después de enviar los datos
-                    Debug.Log("Cambiando a la escena: " + Cementerio);
-                    UnityEngine.SceneManagement.SceneManager.LoadScene(Cementerio);
-                }
-                else
+                // Desactivar el temporizador si existe
+                if (countdownTimer != null)
                 {
-                    Debug.LogError("El nombre de la escena no está asignado o es incorrecto.");
+                    countdownTimer.enabled = false;
                 }
+
+                // Cambiar de escena
+                UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneName);
             }
         }
+    }
+
+    // Método para verificar si el objeto es uno de los requeridos
+    bool IsRequiredObject(string objectName)
+    {
+        foreach (string requiredName in requiredObjectNames)
+        {
+            if (objectName == requiredName)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
