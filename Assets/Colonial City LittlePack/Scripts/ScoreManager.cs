@@ -44,6 +44,6 @@ public class ScoreManager : MonoBehaviour
     void LoadNextScene()
     {
         // Asegúrate de tener una escena llamada "Hospital" o la que desees cargar
-        SceneManager.LoadScene("Hospital"); // O usa el nombre adecuado de tu escena
+        SceneManager.LoadScene("HospitalMejorado"); // O usa el nombre adecuado de tu escena
     }
 }

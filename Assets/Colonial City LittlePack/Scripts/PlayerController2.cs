@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro; // Asegúrate de tener TextMeshPro para el mensaje
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController2 : MonoBehaviour
 {
     [Header("References")]
     public Camera playerCamera;
-    public GameObject endGamePanel; // Panel de finalización del juego
-    public TextMeshProUGUI endGameText; // Texto de finalización del juego
 
     [Header("General")]
     public float gravityScale = -20f;
@@ -32,23 +29,12 @@ public class PlayerController2 : MonoBehaviour
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
-        endGamePanel.SetActive(false); // Asegúrate de que el panel esté oculto al inicio
     }
 
     private void Update()
     {
         Look();
         Move();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        // Verifica si el jugador ha chocado con el cuchillo
-        if (other.CompareTag("Cuchillo"))
-        {
-            // Muestra el mensaje de finalización del juego
-            ShowEndGameMessage("¡Felicitaciones, juego finalizado!");
-        }
     }
 
     private void Move()
@@ -87,12 +73,5 @@ public class PlayerController2 : MonoBehaviour
 
         transform.Rotate(Vector3.up * rotationinput.x);
         playerCamera.transform.localRotation = Quaternion.Euler(-cameraVerticalAngle, 0f, 0f);
-    }
-
-    private void ShowEndGameMessage(string message)
-    {
-        endGamePanel.SetActive(true);
-        endGameText.text = message;
-        Time.timeScale = 0f; // Pausa el juego
     }
 }

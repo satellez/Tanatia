@@ -14,7 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ESCENAS/Cementerio.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/ESCENAS/Hospital.unity
     guid: 1e635fe43fdb518439fb95acfc36c66e
+  - enabled: 1
+    path: Assets/ESCENAS/HospitalMejorado.unity
+    guid: 7ae2481aa0faa4f42aab2345ea07779d
+  - enabled: 1
+    path: Assets/ESCENAS/Inicio.unity
+    guid: 5fb221dfa02126f4183f84ec915a169e
   m_configObjects: {}
